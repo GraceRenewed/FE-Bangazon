@@ -9,7 +9,7 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      Welcome to Next JS!
+      Bangazon Pet Store!
     </div>
   );
 }
