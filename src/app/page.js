@@ -1,9 +1,28 @@
 'use client';
 
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-function Home() {
+function Home({ obj }) {
+  const router = useRouter();
+
+  const handleSellerNavigation = () => {
+    if (obj.userUid) {
+      router.push(`/seller/edit/${obj.userUid}`);
+    } else {
+      router.push('/seller/new');
+    }
+  };
+
+  const handleCustomerNavigation = () => {
+    if (obj.userUid) {
+      router.push(`/customer/edit/${obj.userUid}`);
+    } else {
+      router.push('/customer/new');
+    }
+  };
+
   return (
     <div>
       <div
@@ -20,15 +39,18 @@ function Home() {
       </div>
 
       <div className="text-center my-4">
-        <Link href="/product/shop" passHref>
-          <Button>Shop</Button>
-        </Link>
-        <Link href="/seller/new" passHref>
-          <Button>Create Update Seller Account</Button>
-        </Link>
+        <Button onClick={handleCustomerNavigation}>{obj.userUid ? 'Update Customer Account' : 'Create Seller Account'}</Button>
+
+        <Button onClick={handleSellerNavigation}>{obj.userUid ? 'Update Seller Account' : 'Create Seller Account'}</Button>
       </div>
     </div>
   );
 }
+
+Home.propTypes = {
+  obj: PropTypes.shape({
+    userUid: PropTypes.string,
+  }),
+};
 
 export default Home;
