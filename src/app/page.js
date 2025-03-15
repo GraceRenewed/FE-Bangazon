@@ -20,11 +20,11 @@ function Home() {
       </div>
 
       <div className="text-center my-4">
-        <Link href="/customer/new/shop" passHref>
+        <Link href="/product/shop" passHref>
           <Button>Shop</Button>
         </Link>
-        <Link href="/seller/new/sell" passHref>
-          <Button>Sell</Button>
+        <Link href="/seller/new" passHref>
+          <Button>Create Update Seller Account</Button>
         </Link>
       </div>
     </div>

@@ -45,10 +45,10 @@ function SellerProfileForm({ obj = initialState }) {
     const payload = { ...sellerDetails, userUid: user.userUid };
     // if the object already has an id then the updateVenues function is called router pushes the updated information to the venues page-else it creates a new venue
     if (obj.id) {
-      updateSeller(payload).then(() => router.push(`/api/sellers`));
+      updateSeller(payload).then(() => router.push(`/seller/`));
     } else {
       createSeller(payload).then(() => {
-        router.push(`/api/sellers`);
+        router.push(`/seller/`);
       });
     }
   };
