@@ -18,6 +18,12 @@ export default function NavBar() {
             <Link className="nav-link" href="/">
               Home
             </Link>
+            <Link className="nav-link" href="/shop">
+              Shopping
+            </Link>
+            <Link className="nav-link" href="/Sell">
+              My Store
+            </Link>
             <Button variant="danger" onClick={signOut}>
               Sign Out
             </Button>
