@@ -2,9 +2,9 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getCustomerDetails = (userUid) =>
+const getSellerDetails = (userUid) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/api/customers/${userUid}`, {
+    fetch(`${endpoint}/api/sellers/${userUid}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -21,9 +21,9 @@ const getCustomerDetails = (userUid) =>
       .catch(reject);
   });
 
-const createCustomer = (payload) =>
+const createSeller = (payload) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/api/customers`, {
+    fetch(`${endpoint}/api/sellers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,9 +35,9 @@ const createCustomer = (payload) =>
       .catch(reject);
   });
 
-const updateCustomer = (payload) =>
+const updateSeller = (payload) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/api/customers/${payload.userUid}`, {
+    fetch(`${endpoint}/api/sellers/${payload.userUid}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -49,9 +49,9 @@ const updateCustomer = (payload) =>
       .catch(reject);
   });
 
-const deleteCustomer = (userUid) =>
+const deleteSeller = (userUid) =>
   new Promise((resolve, reject) => {
-    fetch(`${endpoint}/api/customers/${userUid}`, {
+    fetch(`${endpoint}/api/sellers/${userUid}`, {
       method: 'DELETE',
       headers: {
         'Conent-Type': 'application/json',
@@ -61,4 +61,4 @@ const deleteCustomer = (userUid) =>
       .catch(reject);
   });
 
-export { getCustomerDetails, createCustomer, updateCustomer, deleteCustomer };
+export { getSellerDetails, createSeller, updateSeller, deleteSeller };
