@@ -21,6 +21,19 @@ const getAllProducts = () =>
       .catch(reject);
   });
 
+const getSingleProduct = (userUid) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/api/products/${userUid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
 const getAllUserProducts = (userUid) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/api/products/users/${userUid}`, {
@@ -40,4 +53,32 @@ const getAllUserProducts = (userUid) =>
       .catch(reject);
   });
 
-export { getAllProducts, getAllUserProducts };
+const createProduct = (payload) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/api/products`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+const updateProduct = (payload) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/api/products/${payload.userUid}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+export { getAllProducts, createProduct, getSingleProduct, getAllUserProducts, updateProduct };
