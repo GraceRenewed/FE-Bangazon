@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { getAllProducts } from '../../api/productData';
-import ProductCard from '../../components/ProductCard';
+import { getAllProducts } from '../../../api/productData';
+import ProductCard from '../../../components/ProductCard';
 
-function Home() {
+function Shop() {
   // *set state for Products
   const [products, setProducts] = useState([]);
 
@@ -34,4 +34,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Shop;
