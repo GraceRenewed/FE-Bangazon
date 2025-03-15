@@ -2,6 +2,25 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
+const getAllSellers = () =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/api/sellers`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          resolve(Object.values(data));
+        } else {
+          resolve([]);
+        }
+      })
+      .catch(reject);
+  });
+
 const getSellerDetails = (userUid) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/api/sellers/${userUid}`, {
@@ -61,4 +80,4 @@ const deleteSeller = (userUid) =>
       .catch(reject);
   });
 
-export { getSellerDetails, createSeller, updateSeller, deleteSeller };
+export { getAllSellers, getSellerDetails, createSeller, updateSeller, deleteSeller };
